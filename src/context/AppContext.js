@@ -6,8 +6,7 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [tonConnectUI] = useTonConnectUI();
   const [userAddress, setUserAddress] = useState(null);
-  // Set hasPaid to true for testing purposes
-  const [hasPaid, setHasPaid] = useState(true); // Changed to true for testing
+  const [hasPaid, setHasPaid] = useState(false);
   const [miningStats, setMiningStats] = useState({
     chixTokens: 0,
     miningPower: 1,
@@ -26,14 +25,14 @@ export const AppProvider = ({ children }) => {
       try {
         if (tonConnectUI.connected && tonConnectUI.account) {
           setUserAddress(tonConnectUI.account.address);
-          // For testing, always set hasPaid to true
-          setHasPaid(true);
+          // In production, we should check the actual payment status
+          checkPaymentStatus(tonConnectUI.account.address);
         } else {
           setUserAddress(null);
+          setHasPaid(false);
         }
       } catch (error) {
         console.error("Wallet connection error:", error);
-        // Handle connection error gracefully
         setUserAddress(null);
       }
     };
