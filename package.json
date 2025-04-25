@@ -6,9 +6,9 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@ton/core": "^0.52.2",
+    "@ton/core": "^0.56.0",
     "@ton/crypto": "^3.2.0",
-    "@ton/ton": "^13.9.0",
+    "@ton/ton": "^13.11.2",
     "@tonconnect/sdk": "^3.0.0",
     "@tonconnect/ui-react": "^2.0.0",
     "framer-motion": "^10.16.4",
@@ -20,9 +20,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "build:windows": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "start": "set \"GENERATE_SOURCEMAP=false\" && react-scripts start",
+    "build": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "build:vercel": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -47,5 +47,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31"
+  },
+  "resolutions": {
+    "@ton/core": "^0.56.0"
   }
 }
